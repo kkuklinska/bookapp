@@ -32,17 +32,22 @@ public class InMemoryClassRoomRepository implements ClassRoomRepository {
     @Override
     public ClassRoom delete(int delnumber) {
         classRooms.remove(findByNumber(delnumber));
+
         return null;
     }
 
     @Override
-    public ClassRoom book(int number) {
-       while(true){
-           ClassRoom.isAvailable(false);
+    public void book(int number) {
+        ClassRoom.setAvailable(false);
+        if (classRooms.isEmpty()) {
+            System.out.println("");
 
         }
 
-        }
     }
+    }
+
+
+
 
 

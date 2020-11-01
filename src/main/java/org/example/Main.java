@@ -11,7 +11,7 @@ public class Main {                        // ????
 
     public static void main(String[] args) {
         new Main().run();               // nie rozumiem tej konstrukcji nowy obiekt Main?? i na nim metoda run?
-    }                                   // - utworzono instancje klasy main po to aby metody mogly byc niestatyczne ?
+    }                                   // - ?utworzono instancje klasy main po to aby metody mogly byc niestatyczne ?
 
         public void run () {
 
@@ -78,7 +78,8 @@ public class Main {                        // ????
     private void bookClassroom (Scanner scanner){
         System.out.println("Enter number of classroom to book: ");
         int booknumber = scanner.nextInt();
-        System.out.println(bookService.book(booknumber));
+        System.out.println("Classroom booked successfully.");
+
 
     }
 

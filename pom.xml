@@ -8,9 +8,10 @@
     <artifactId>book-app</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-<properties>
-    <java.version>14</java.version>
- </properties>
+    <properties>
+        <maven.compiler.source>1.15</maven.compiler.source>
+        <maven.compiler.target>1.15</maven.compiler.target>
+    </properties>
 <dependencies>
     <dependency>
         <groupId>org.junit.jupiter</groupId>
@@ -24,6 +25,13 @@
         <version>5.7.0</version>
         <scope>test</scope>
     </dependency>
+    <dependency>
+        <groupId>org.assertj</groupId>
+        <artifactId>assertj-core</artifactId>
+        <version>3.16.1</version>
+        <scope>test</scope>
+    </dependency>
+
 </dependencies>
 
     <build>
@@ -33,8 +41,10 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <release>14</release>
+                    <release>15</release>
                     <compilerArgs>--enable-preview</compilerArgs>
+                    <source>15</source>
+                    <target>15</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -43,6 +53,19 @@
                 <version>3.0.0-M3</version>
                 <configuration>
                     <argLine>--enable-preview</argLine>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M3</version>
+                <configuration>
+                    <properties>
+                        <configurationParameters>
+                            junit.jupiter.conditions.deactivate = *
+                            junit.jupiter.extensions.autodetection.enabled = true
+                            junit.jupiter.testinstance.lifecycle.default = per_class
+                        </configurationParameters>
+                    </properties>
                 </configuration>
             </plugin>
         </plugins>

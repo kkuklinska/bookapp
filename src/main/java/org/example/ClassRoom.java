@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Objects;
+
 public class ClassRoom {
     private int number;
     private int seats;
@@ -7,18 +9,18 @@ public class ClassRoom {
     private int whiteboard;
     private int blackboard;
     private int speakers;
-    private boolean available ;
+    private static boolean available = true;
 
-    public static void isAvailable(boolean b) {
+    public static boolean getAvailable() {
+        return available;
+    }
+
+    public static void setAvailable(boolean isAva) {
+        available= isAva;
     }
 
     public int getNumber() {
         return number;
-    }
-    
-
-    public boolean isAvailable() {
-        return available == true;
     }
 
     public ClassRoom(int number, int seats, int projector, int whiteboard, int blackboard, int speakers, boolean available) {
@@ -32,6 +34,24 @@ public class ClassRoom {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ClassRoom classRoom = (ClassRoom) o;
+        return number == classRoom.number &&
+                seats == classRoom.seats &&
+                projector == classRoom.projector &&
+                whiteboard == classRoom.whiteboard &&
+                blackboard == classRoom.blackboard &&
+                speakers == classRoom.speakers;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(number, seats, projector, whiteboard, blackboard, speakers);
+    }
+
+    @Override
     public String toString() {
         return "ClassRoom{" +
                 "number=" + number +
@@ -42,6 +62,7 @@ public class ClassRoom {
                 ", speakers=" + speakers +
                 ", available=" + available +
                 '}';
+
     }
 }
 

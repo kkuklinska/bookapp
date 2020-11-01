@@ -19,9 +19,17 @@ public class BookService {
     }
 
     public ClassRoom delete(int delnumber) {
-        return classRoomRepository.delete((delnumber));
+        classRoomRepository.delete(delnumber);
+        return classRoomRepository.delete(delnumber);
     }
-    public ClassRoom book(int booknumber) {
-        return classRoomRepository.findByNumber((booknumber));
+
+    public void book(int booknumber) {
+        if (ClassRoom.getAvailable() == true) {
+            classRoomRepository.findByNumber((booknumber)).setAvailable(false);
+
+        } else {
+            System.out.println("This classroom is not available");
+        }
+
     }
 }

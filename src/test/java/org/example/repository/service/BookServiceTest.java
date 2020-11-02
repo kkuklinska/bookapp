@@ -22,7 +22,7 @@ private BookService service;
     }
     @Test
     public void verifyIfClassroomBookedCorrectly(){
-//given
+        //given
         int numberToBook = 1;
         ClassRoom classRoomToBook = new ClassRoom(
                 numberToBook, 20, 1, 1,
@@ -34,6 +34,25 @@ private BookService service;
          ClassRoom classRoomAfterBooking = new ClassRoom(
                         numberToBook, 20, 1, 1,
                         11, 2, false);
+
+        ClassRoom actualClassroomAfterBooking = service.findByNumber(1);
+
+        Assertions.assertEquals(classRoomAfterBooking, actualClassroomAfterBooking);
+    }
+    @Test
+    public void verifyIfClassroomNotBookedIfItIsBookedAlreadyNow(){
+        //given
+        int numberToBook = 1;
+        ClassRoom classRoomToBook = new ClassRoom(
+                numberToBook, 20, 1, 1,
+                11, 2, false);
+        service.save(classRoomToBook);
+        //when
+        service.book(numberToBook);
+        //then
+        ClassRoom classRoomAfterBooking = new ClassRoom(
+                numberToBook, 20, 1, 1,
+                11, 2, false);
 
         ClassRoom actualClassroomAfterBooking = service.findByNumber(1);
 

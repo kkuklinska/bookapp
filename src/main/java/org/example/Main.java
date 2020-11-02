@@ -4,6 +4,7 @@ import org.example.repository.InMemoryClassRoomRepository;
 import org.example.service.BookService;
 
 import java.util.HashSet;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Main {                        // ????
@@ -17,7 +18,8 @@ public class Main {                        // ????
 
 
             try (Scanner scanner = new Scanner(System.in)) {
-                final InMemoryClassRoomRepository repository = new InMemoryClassRoomRepository(new HashSet<>());
+                HashSet<ClassRoom> classRooms = new HashSet<>();
+                final InMemoryClassRoomRepository repository = new InMemoryClassRoomRepository(classRooms);
                 bookService = new BookService(repository);
 
                 while (true) {
@@ -72,17 +74,35 @@ public class Main {                        // ????
     private void deleteClassroom(Scanner scanner) {
         System.out.println("Enter number of classroom to delete: ");
         int delnumber = scanner.nextInt();
-        System.out.println(bookService.delete(delnumber));
-
+        System.out.println();
+        try {
+            bookService.delete(delnumber);
+            System.out.println("Classroom deleted successfully.");
+        }
+        catch(NoSuchElementException exception){
+            System.out.println("This classroom is not exist");
+        }
     }
-    private void bookClassroom (Scanner scanner){
+    private void bookClassroom (Scanner scanner) {
         System.out.println("Enter number of classroom to book: ");
         int booknumber = scanner.nextInt();
-        System.out.println("Classroom booked successfully.");
+            try {
+                if(ClassRoom.getAvailable()== false) {
+                    System.out.println("This classroom is not available");
+                }
+                if (ClassRoom.getAvailable() == true) {
+                    bookService.findByNumber((booknumber)).setAvailable(false);
+                    System.out.println("Classroom booked successfully.");
+                }
+            }
+         catch(NoSuchElementException exception){
+            System.out.println("This classroom is not exist");
+        }
+      }
+   }
 
 
-    }
 
-}
+
 
 

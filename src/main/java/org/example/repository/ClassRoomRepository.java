@@ -7,7 +7,7 @@ public interface ClassRoomRepository {
 
     ClassRoom findByNumber(int number);
 
-    ClassRoom delete(int classroom);
+    void delete(int classroom);
 
     void book(int number);
 }

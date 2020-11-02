@@ -30,10 +30,9 @@ public class InMemoryClassRoomRepository implements ClassRoomRepository {
     }
 
     @Override
-    public ClassRoom delete(int delnumber) {
+    public void delete(int delnumber) {
         classRooms.remove(findByNumber(delnumber));
 
-        return null;
     }
 
     @Override

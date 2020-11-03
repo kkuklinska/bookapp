@@ -41,7 +41,7 @@ public class Main {                        // ????
                     if(next.equals("4")) {
                         deleteClassroom(scanner);
                     }
-                    if(next.equals("4")) {
+                    if(next.equals("5")) {
                         break;
                     }
                 }
@@ -98,8 +98,8 @@ public class Main {                        // ????
          catch(NoSuchElementException exception){
             System.out.println("This classroom is not exist");
         }
+       }
       }
-   }
 
 
 

@@ -22,17 +22,17 @@ public class BookServiceTest {
         service = new BookService(new InMemoryClassRoomRepository(classRooms));
     }
 
-    @Test
-    public void verifyIfClassroomAddCorrectly() { // nie rozumiem co gdzie mam testowac np dodawanie nowej sali czy w bookserviceTest czy w inmemoryClassroomrepositorytest
-        //given                                    // tu i tu mam dodawanie otestowane i przechodzi
-        int numberToDeleted = 1;
-        ClassRoom classRoomToAdd = new ClassRoom(
-                "Sala komputerowa", numberToDeleted, 40, 1, 1, 0, 40, false);
-        service.save(classRoomToAdd);
-        //when
-        ClassRoom expectedClassRoom = new ClassRoom(
-                "Sala komputerowa", numberToDeleted, 40, 1, 1, 0, 40, false);
-        Assertions.assertEquals(expectedClassRoom, classRoomToAdd);
+//    @Test
+//    public void verifyIfClassroomAddCorrectly() { // nie rozumiem co gdzie mam testowac np dodawanie nowej sali czy w bookserviceTest czy w inmemoryClassroomrepositorytest
+//        //given                                    // tu i tu mam dodawanie otestowane i przechodzi
+//        int numberToDeleted = 1;
+//        ClassRoom classRoomToAdd = new ClassRoom(
+//                "Sala komputerowa", numberToDeleted, 40, 1, 1, 0, 40, false);
+//        service.save(classRoomToAdd);
+//        //when
+//        ClassRoom expectedClassRoom = new ClassRoom(
+//                "Sala komputerowa", numberToDeleted, 40, 1, 1, 0, 40, false);
+//        Assertions.assertEquals(expectedClassRoom, classRoomToAdd);
     }
 
 //    @Test
@@ -111,6 +111,6 @@ public class BookServiceTest {
 //
 //
 //    }
-}
+
 
 

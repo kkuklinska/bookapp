@@ -115,8 +115,7 @@ public class Main {                        // ????
             System.out.println("Enter speakers: ");
             int speakers = scanner.nextInt();
 
-            bookService.save(new ClassRoom(name, number, seats, projector, whiteboard, blackboard,
-                    speakers, true));
+            bookService.save(new ClassRoom(null,name,number,seats,projector,whiteboard,blackboard,speakers,true));
         }
 
     private void findClassroom(Scanner scanner) {

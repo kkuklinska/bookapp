@@ -18,7 +18,7 @@ public class JDBCClassroomRepository implements ClassRoomRepository {
     public void save(ClassRoom classroom) {
         try (Connection connection = DriverManager.getConnection(JDBC_URL, USER, PASSWORD)) {
             final int number = classroom.getNumber();
-            final PreparedStatement statement = connection.prepareStatement("INSERT INTO USERS(NUMBER) VALUES (?,?)");
+            final PreparedStatement statement = connection.prepareStatement("INSERT INTO CLASSROOMBASE(NUMBER) VALUES (?)");
             statement.setInt(1, number);
             statement.execute();
         } catch (SQLException e) {

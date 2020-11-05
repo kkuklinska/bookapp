@@ -3,6 +3,7 @@ package org.example.repository.Classroom;
 import org.example.ClassRoom;
 import org.example.repository.Classroom.ClassRoomRepository;
 
+import java.util.Optional;
 import java.util.Set;
 
 public class InMemoryClassRoomRepository implements ClassRoomRepository {
@@ -38,7 +39,10 @@ public class InMemoryClassRoomRepository implements ClassRoomRepository {
 
     @Override
     public void book(int number) {
-        ClassRoom.setAvailable(false);
+        Optional<ClassRoom> first = classRooms.stream().filter(classRoom -> classRoom.getNumber() == number).
+                findFirst();
+        first.
+                ifPresent(classRoom -> classRoom.setAvailable(false));
         if (classRooms.isEmpty()) {
             System.out.println("");
 

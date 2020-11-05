@@ -12,6 +12,7 @@ public class HibernateRepository implements ClassRoomRepository {
 session.beginTransaction();
 session.save(classroom);
 session.getTransaction().commit();
+session.close();
     }
 
     @Override

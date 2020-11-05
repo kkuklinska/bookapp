@@ -48,7 +48,7 @@ public class BookService {
     public void book(int booknumber) {
         available = classRoomRepository.findByNumber(booknumber).isAvailable();
         try {
-            if(available == false) {
+            if(!available) {
                 System.out.println("This classroom is not available");
             }
             if (available) {

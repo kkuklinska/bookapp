@@ -13,23 +13,23 @@ public class inMemoryClassRoomRepositoryTest {
     private Set<ClassRoom> classRooms;
 
     @BeforeEach
-    public void setup(){   //mimo ze mamy w klasie seta i repository to i tak przed testem trzeba tak jakby w metodzie?
+    public void setup() {   //mimo ze mamy w klasie seta i repository to i tak przed testem trzeba tak jakby w metodzie?
         classRooms = new HashSet<>();
         repository = new InMemoryClassRoomRepository(classRooms);        // to ten set
-    }
-
-    @Test
-    public void verifyIfClassroomAddingCorrectly(){
-//given
-        ClassRoom classRoom = new ClassRoom(
-                "Sala komputerowa", 10, 40,1,1, 0, 40, false );
-        ClassRoom expectedClassRoom = new ClassRoom(
-                "Sala komputerowa", 10, 40,1,1, 0, 40, false );
-        //when
-        repository.save(classRoom);
-        //then
-        ClassRoom actualClassroom = classRooms.stream().findFirst().get();
-        assertEquals(expectedClassRoom,actualClassroom);
-    }
-
+    }//
+//    @Test
+//    public void verifyIfClassroomAddingCorrectly(){
+////given
+//        ClassRoom classRoom = new ClassRoom(
+//                "Sala komputerowa", 10, 40,1,1, 0, 40, false );
+//        ClassRoom expectedClassRoom = new ClassRoom(
+//                "Sala komputerowa", 10, 40,1,1, 0, 40, false );
+//        //when
+//        repository.save(classRoom);
+//        //then
+//        ClassRoom actualClassroom = classRooms.stream().findFirst().get();
+//        assertEquals(expectedClassRoom,actualClassroom);
+//    }
+//
+//}
 }

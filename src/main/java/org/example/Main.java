@@ -1,6 +1,9 @@
 package org.example;
 
+import org.example.repository.Classroom.ClassRoomRepository;
+import org.example.repository.Classroom.HibernateRepository;
 import org.example.repository.Classroom.InMemoryClassRoomRepository;
+import org.example.repository.Classroom.JDBCClassroomRepository;
 import org.example.service.BookService;
 
 import java.util.HashSet;
@@ -15,7 +18,7 @@ public class Main {                        // ????
 
         public void run () {
             HashSet<ClassRoom> classRooms = new HashSet<>();
-            final InMemoryClassRoomRepository repository = new InMemoryClassRoomRepository(classRooms);
+            final ClassRoomRepository repository = new HibernateRepository();
             bookService = new BookService(repository);
 
             HashSet<Instructor> instructors = new HashSet<>();

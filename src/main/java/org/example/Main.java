@@ -83,14 +83,6 @@ public class Main {                        // ????
 
 
 
-
-
-
-
-
-
-
-
                     }
 
                 }
@@ -108,8 +100,10 @@ public class Main {                        // ????
 
 
     private void addClassroom(Scanner scanner) {
-        System.out.println("Enter number: ");
-        int number = scanner.nextInt();
+            System.out.println("Enter name: ");
+            String name = scanner.next();
+            System.out.println("Enter number: ");
+            int number = scanner.nextInt();
             System.out.println("Enter seats: ");
             int seats = scanner.nextInt();
             System.out.println("Enter projector: ");
@@ -121,7 +115,7 @@ public class Main {                        // ????
             System.out.println("Enter speakers: ");
             int speakers = scanner.nextInt();
 
-            bookService.save(new ClassRoom(number, seats, projector, whiteboard, blackboard,
+            bookService.save(new ClassRoom(name, number, seats, projector, whiteboard, blackboard,
                     speakers, true));
         }
 

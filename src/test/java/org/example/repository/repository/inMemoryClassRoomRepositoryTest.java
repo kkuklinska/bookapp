@@ -22,11 +22,9 @@ public class inMemoryClassRoomRepositoryTest {
     public void verifyIfClassroomAddingCorrectly(){
 //given
         ClassRoom classRoom = new ClassRoom(
-                1, 20, 1, 1,
-                11, 2, true);
+                "Sala komputerowa", 10, 40,1,1, 0, 40, false );
         ClassRoom expectedClassRoom = new ClassRoom(
-                1, 20, 1, 1,
-                11, 2, true);
+                "Sala komputerowa", 10, 40,1,1, 0, 40, false );
         //when
         repository.save(classRoom);
         //then

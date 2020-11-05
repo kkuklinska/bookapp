@@ -15,56 +15,115 @@ public class Main {                        // ????
     }                                   // - ?utworzono instancje klasy main po to aby metody mogly byc niestatyczne ?
 
         public void run () {
+            HashSet<ClassRoom> classRooms = new HashSet<>();
+            final InMemoryClassRoomRepository repository = new InMemoryClassRoomRepository(classRooms);
+            bookService = new BookService(repository);
+
+            HashSet<Instructor> instructors = new HashSet<>();
+
 
 
             try (Scanner scanner = new Scanner(System.in)) {
-                HashSet<ClassRoom> classRooms = new HashSet<>();
-                final InMemoryClassRoomRepository repository = new InMemoryClassRoomRepository(classRooms);
-                bookService = new BookService(repository);
-
                 while (true) {
-                    System.out.println("1 - book classroom");
-                    System.out.println("2 - find classroom");
-                    System.out.println("3 - add classroom");
-                    System.out.println("4 - delete classroom");
-                    System.out.println("5 - exit app");
-                  final String next = scanner.next();
-                    if(next.equals("1")) {
-                        bookClassroom(scanner);
+                    System.out.println("1 - classroom service");
+                    System.out.println("2 - instructor service");
+                    System.out.println("3 - practical classes service");
+                    System.out.println("4 - exit app");
+                    final String next = scanner.next();
+                    if (next.equals("1")) {
+                        while (true) {
+                            System.out.println("1 - book classroom");
+                            System.out.println("2 - find classroom");
+                            System.out.println("3 - add classroom");
+                            System.out.println("4 - delete classroom");
+                            System.out.println("5 - exit app");
+                            final String nextclass = scanner.next();
+                            if (nextclass.equals("1")) {
+                                bookClassroom(scanner);
+                            }
+                            if (nextclass.equals("2")) {
+                                findClassroom(scanner);
+                            }
+                            if (nextclass.equals("3")) {
+                                addClassroom(scanner);
+                            }
+                            if (nextclass.equals("4")) {
+                                deleteClassroom(scanner);
+                            }
+                            if (nextclass.equals("5")) {
+                                break;
+                            }
+                           }
+                          }
+                    if(next.equals("2")) {
+                        while (true) {
+                            System.out.println("1 - set instructor");
+                            System.out.println("2 - find instructor");
+                            System.out.println("3 - add instructor");
+                            System.out.println("4 - delete instructor");
+                            System.out.println("5 - exit app");
+                            final String nextclass = scanner.next();
+                            if (nextclass.equals("1")) {
+                                setInstructor(scanner);
+                            }
+                            if (nextclass.equals("2")) {
+                                findInstructor(scanner);
+                            }
+                            if (nextclass.equals("3")) {
+                                addInstructor(scanner);
+                            }
+                            if (nextclass.equals("4")) {
+                                deleteInstructor(scanner);
+                            }
+                            if (nextclass.equals("5")) {
+                                break;
+                            }
+                        }
                     }
-                  if(next.equals("2")) {
-                      findClassroom(scanner);
-                  }
-                    if(next.equals("3")) {
-                        addClassroom(scanner);
+
+
+
+
+
+
+
+
+
+
+
                     }
-                    if(next.equals("4")) {
-                        deleteClassroom(scanner);
-                    }
-                    if(next.equals("5")) {
-                        break;
-                    }
+
                 }
             }
-        }
+
+    private void setInstructor(Scanner scanner) {
+    }
+    private void findInstructor(Scanner scanner) {
+    }
+    private void addInstructor(Scanner scanner) {
+    }
+    private void deleteInstructor(Scanner scanner) {
+    }
+
+
 
     private void addClassroom(Scanner scanner) {
         System.out.println("Enter number: ");
         int number = scanner.nextInt();
-        System.out.println("Enter seats: ");
-        int seats = scanner.nextInt();
-        System.out.println("Enter projector: ");
-        int projector = scanner.nextInt();
-        System.out.println("Enter whiteboard: ");
-        int whiteboard = scanner.nextInt();
-        System.out.println("Enter blackboard: ");
-        int blackboard = scanner.nextInt();
-        System.out.println("Enter speakers: ");
-        int speakers = scanner.nextInt();
+            System.out.println("Enter seats: ");
+            int seats = scanner.nextInt();
+            System.out.println("Enter projector: ");
+            int projector = scanner.nextInt();
+            System.out.println("Enter whiteboard: ");
+            int whiteboard = scanner.nextInt();
+            System.out.println("Enter blackboard: ");
+            int blackboard = scanner.nextInt();
+            System.out.println("Enter speakers: ");
+            int speakers = scanner.nextInt();
 
-        bookService.save(new ClassRoom(number, seats, projector, whiteboard, blackboard,
-        speakers, true));
-    }
+            bookService.save(new ClassRoom(number, seats, projector, whiteboard, blackboard,
+                    speakers, true));
+        }
 
     private void findClassroom(Scanner scanner) {
         System.out.println("Enter number: ");
@@ -74,32 +133,13 @@ public class Main {                        // ????
     private void deleteClassroom(Scanner scanner) {
         System.out.println("Enter number of classroom to delete: ");
         int delnumber = scanner.nextInt();
-        System.out.println();
-        try {
-            bookService.delete(delnumber);
-            System.out.println("Classroom deleted successfully.");
-        }
-        catch(NoSuchElementException exception){
-            System.out.println("This classroom is not exist");
-        }
+
     }
     private void bookClassroom (Scanner scanner) {
         System.out.println("Enter number of classroom to book: ");
         int booknumber = scanner.nextInt();
-            try {
-                if(ClassRoom.getAvailable()== false) {
-                    System.out.println("This classroom is not available");
-                }
-                if (ClassRoom.getAvailable() == true) {
-                    bookService.findByNumber((booknumber)).setAvailable(false);
-                    System.out.println("Classroom booked successfully.");
-                }
-            }
-         catch(NoSuchElementException exception){
-            System.out.println("This classroom is not exist");
-        }
-       }
-      }
+    }
+}
 
 
 

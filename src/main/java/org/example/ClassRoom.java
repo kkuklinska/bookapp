@@ -3,7 +3,7 @@ package org.example;
 import java.util.Objects;
 
 public class ClassRoom {
-    private int number;
+    private static int number;
     private int seats;
     private int projector;
     private int whiteboard;
@@ -19,7 +19,7 @@ public class ClassRoom {
         available= isAva;
     }
 
-    public int getNumber() {
+    public static int getNumber() {            //zeby miec dostep do gettera musialam dodac static czemu?
         return number;
     }
 
@@ -32,6 +32,8 @@ public class ClassRoom {
         this.speakers = speakers;
         this.available = available;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

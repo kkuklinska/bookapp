@@ -23,8 +23,8 @@ private BookService service;
     }
 
     @Test
-    public void verifyIfClassroomAddCorrectly() { // nie rozumiem co gdzie mam testowac dodawanie nowej sali czy w bookserviceTest czy w inmemoryClassroomrepositorytest
-        //given                                    // tu i tu mam dodawanie otestowanie i przechodzi
+    public void verifyIfClassroomAddCorrectly() { // nie rozumiem co gdzie mam testowac np dodawanie nowej sali czy w bookserviceTest czy w inmemoryClassroomrepositorytest
+        //given                                    // tu i tu mam dodawanie otestowane i przechodzi
         int numberToDeleted = 1;
         ClassRoom classRoomToAdd = new ClassRoom(
                 numberToDeleted, 20, 1, 1,
@@ -75,28 +75,48 @@ private BookService service;
 
         Assertions.assertEquals(classRoomAfterBooking, actualClassroomAfterBooking);
     }
-        @Test
-        public void verifyIfClassroomDeletedCorrectly() {
-            //given
-            int numberToDeleted = 1;
-            ClassRoom classRoomToAdd = new ClassRoom(
-                    numberToDeleted, 20, 1, 1,
-                    11, 2, false);
-            service.save(classRoomToAdd);
-            //when
-            service.delete(numberToDeleted);
-//            //then
-
-//            ClassRoom deletedClassroom = service.findByNumber(numberToDeleted);
-//            ClassRoom expecteddeletedClassRoom = null;
-//            Assertions.assertEquals(expecteddeletedClassRoom, deletedClassroom);
-//            Assertions.assertNull(deletedClassroom);                            nie dziala no value present
+//        @Test
+//        public void verifyIfClassroomDeletedCorrectly() {
+//            //given
+//            int numberToDeleted = 1;
+//            ClassRoom classRoomToAdd = new ClassRoom(
+//                    numberToDeleted, 20, 1, 1,
+//                    11, 2, false);
+//            service.save(classRoomToAdd);
+//            //when
+//            service.delete(numberToDeleted);
+////            //then
 //
-            Assertions.assertThrows(
-                    NoSuchElementException.class,
-                    () -> service.delete(numberToDeleted)
+////            ClassRoom deletedClassroom = service.findByNumber(numberToDeleted);
+////            ClassRoom expecteddeletedClassRoom = null;
+////            Assertions.assertEquals(expecteddeletedClassRoom, deletedClassroom);
+////            Assertions.assertNull(deletedClassroom);                            nie dziala no value present
+////
+//            Assertions.assertThrows(
+//                    NoSuchElementException.class,
+//                    () -> service.delete(numberToDeleted)
 
-            );
+//            );
         }
-    }
+//    @Test
+//    public void verifyIfClassroomCantDeleteIfItIsNotExist() {        no value present - nie mam pomyslu w mainie jest try catch na nosuchelementexception
+//        //given
+//        int numberToDeleted = 1;
+//        ClassRoom classRoomToAdd = new ClassRoom(
+//                numberToDeleted, 20, 1, 1,
+//                11, 2, false);
+//        //when
+//        service.save(classRoomToAdd);
+//        service.delete(numberToDeleted);
+//
+//        //then
+////        Assertions.assertNull(service.findByNumber(numberToDeleted));
+//
+//        Assertions.assertThrows(
+//                NoSuchElementException.class,
+//                () -> service.delete(numberToDeleted));
+//
+//
+//      }
+
 

@@ -11,7 +11,7 @@ public class ClassRoom {
     private int speakers;
     private static boolean available = true;
 
-    public static boolean getAvailable() {
+    public static boolean isAvailable() {
         return available;
     }
 

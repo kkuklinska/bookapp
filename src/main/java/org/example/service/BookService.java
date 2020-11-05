@@ -6,7 +6,7 @@ wcześniej zrobilam wszytskie ify w mainie i dzialalo, dalam to do bookservice i
 */
 
 import org.example.ClassRoom;
-import org.example.repository.ClassRoomRepository;
+import org.example.repository.Classroom.ClassRoomRepository;
 
 import java.util.NoSuchElementException;
 

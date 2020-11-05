@@ -1,13 +1,12 @@
 package org.example.repository.service;
 
 import org.example.ClassRoom;
-import org.example.repository.InMemoryClassRoomRepository;
+import org.example.repository.Classroom.InMemoryClassRoomRepository;
 import org.example.service.BookService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.HashSet;
-import java.util.NoSuchElementException;
 import java.util.Set;
 
 public class BookServiceTest {

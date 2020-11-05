@@ -1,6 +1,7 @@
-package org.example.repository;
+package org.example.repository.Classroom;
 
 import org.example.ClassRoom;
+import org.example.repository.Classroom.ClassRoomRepository;
 
 import java.util.Set;
 

@@ -1,7 +1,7 @@
 package org.example.repository.repository;
 
 import org.example.ClassRoom;
-import org.example.repository.InMemoryClassRoomRepository;
+import org.example.repository.Classroom.InMemoryClassRoomRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;

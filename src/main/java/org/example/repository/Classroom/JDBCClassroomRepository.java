@@ -11,19 +11,42 @@ public class JDBCClassroomRepository implements ClassRoomRepository {
 
         public static final String USER = "postgres";
         public static final String PASSWORD = "qwerty";
-        public static final String JDBC_URL = "jdbc:postgresql://127.0.0.1:5432/test";
+        public static final String JDBC_URL = "jdbc:postgresql://127.0.0.1:5432/test";   // ://127.0.0.1:49311/browser/
 
 
     @Override
     public void save(ClassRoom classroom) {
         try (Connection connection = DriverManager.getConnection(JDBC_URL, USER, PASSWORD)) {
             final int number = classroom.getNumber();
-            final PreparedStatement statement = connection.prepareStatement("INSERT INTO CLASSROOMBASE(NUMBER) VALUES (?)");
-            statement.setInt(1, number);
+            long id = classroom.getId();
+            String name = classroom.getName();
+            int seats = classroom.getSeats();
+            int projector= classroom.getProjector();
+            int whiteboard= classroom.getWhiteboard();
+            int blackboard= classroom.getBlackboard();
+            int speakers = classroom.getSpeakers();
+            boolean available= classroom.isAvailable();
+            final PreparedStatement statement = connection.prepareStatement(
+                    "INSERT INTO CLASSROOMBASE(CLASSROOM_ID, CLASSROOM_NAME, NUMBER, SEATS, PROJECTOR, WHITEBOARD, BLACKBOARD, SPEAKERS,AVAILABLE) VALUES (?,?,?,?,?,?,?,?,?)");
+            statement.setLong(1, id);
+            statement.setString(2, name);
+            statement.setInt(3, number);
+            statement.setInt(4, seats);
+            statement.setInt(5, projector);
+            statement.setInt(6, whiteboard);
+            statement.setInt(7, blackboard);
+            statement.setInt(8, speakers);
+            statement.setBoolean(9, available);
             statement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+//            final PreparedStatement statement = connection.prepareStatement("INSERT INTO CLASSROOMBASE(NUMBER) VALUES (?)");
+//            statement.setInt(1, number);
+//            statement.execute();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
 
     }
 

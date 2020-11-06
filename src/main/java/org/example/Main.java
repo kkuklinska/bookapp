@@ -80,13 +80,51 @@ public class Main {                        // ????
                             }
                         }
                     }
-
-
-
+                    if (next.equals("3")) {
+                        while (true) {
+                            System.out.println("1 - book practical classes");
+                            System.out.println("2 - find practical classes");
+                            System.out.println("3 - add new practical classes");
+                            System.out.println("4 - delete practical classes");
+                            System.out.println("5 - exit app");
+                            final String nextclass = scanner.next();
+                            if (nextclass.equals("1")) {
+                                bookPracticalClasses(scanner);
+                            }
+                            if (nextclass.equals("2")) {
+                                findPracticalClasses(scanner);
+                            }
+                            if (nextclass.equals("3")) {
+                                addPracticalClasses(scanner);
+                            }
+                            if (nextclass.equals("4")) {
+                                deletePracticalClasses(scanner);
+                            }
+                            if (nextclass.equals("5")) {
+                                break;
+                            }
+                        }
                     }
-
+                    if (next.equals("4")) {
+                        break;
+                    }
+                  }
                 }
             }
+
+    private void bookPracticalClasses(Scanner scanner) {
+    }
+
+    private void findPracticalClasses(Scanner scanner) {
+    }
+
+    private void addPracticalClasses(Scanner scanner) {
+    }
+
+    private void deletePracticalClasses(Scanner scanner) {
+    }
+
+
 
     private void setInstructor(Scanner scanner) {
     }

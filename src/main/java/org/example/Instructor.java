@@ -1,48 +1,30 @@
 package org.example;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+
+@Entity
+@Table(name = "users")
 public class Instructor {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Instructor_ID")
+    private Long id;
+    @Column(name = "Instructor_name")
     String name;
+    @Column(name = "Instructor_surname")
     String surname;
+    @Column(name = "Department")
     String department;
+    @Column(name = "Available")
     boolean available;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
-    public boolean isAvailable() {
-        return available;
-    }
-
-    public void setAvailable(boolean available) {
-        this.available = available;
-    }
-
-    public Instructor(String name, String surname, String department, boolean available) {
-        this.name = name;
-        this.surname = surname;
-        this.department = department;
-        this.available = available;
 
     }
-}

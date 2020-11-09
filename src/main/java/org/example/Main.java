@@ -7,6 +7,7 @@ import org.example.repository.Classroom.JDBCClassroomRepository;
 import org.example.service.BookService;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {                        // ????
@@ -35,8 +36,9 @@ public class Main {                        // ????
                             System.out.println("1 - book classroom");
                             System.out.println("2 - find classroom");
                             System.out.println("3 - add classroom");
-                            System.out.println("4 - delete classroom");
-                            System.out.println("5 - exit app");
+                            System.out.println("4 - update classroom");
+                            System.out.println("5 - delete classroom");
+                            System.out.println("6 - back to main menu");
                             final String nextclass = scanner.next();
                             if (nextclass.equals("1")) {
                                 bookClassroom(scanner);
@@ -48,9 +50,12 @@ public class Main {                        // ????
                                 addClassroom(scanner);
                             }
                             if (nextclass.equals("4")) {
-                                deleteClassroom(scanner);
+                                updateClassroom(scanner);
                             }
                             if (nextclass.equals("5")) {
+                                deleteClassroom(scanner);
+                            }
+                            if (nextclass.equals("6")) {
                                 break;
                             }
                            }
@@ -61,7 +66,7 @@ public class Main {                        // ????
                             System.out.println("2 - find instructor");
                             System.out.println("3 - add instructor");
                             System.out.println("4 - delete instructor");
-                            System.out.println("5 - exit app");
+                            System.out.println("5 - back to main menu");
                             final String nextclass = scanner.next();
                             if (nextclass.equals("1")) {
                                 setInstructor(scanner);
@@ -86,7 +91,7 @@ public class Main {                        // ????
                             System.out.println("2 - find practical classes");
                             System.out.println("3 - add new practical classes");
                             System.out.println("4 - delete practical classes");
-                            System.out.println("5 - exit app");
+                            System.out.println("5 - back to main menu ");
                             final String nextclass = scanner.next();
                             if (nextclass.equals("1")) {
                                 bookPracticalClasses(scanner);
@@ -111,6 +116,7 @@ public class Main {                        // ????
                   }
                 }
             }
+
 
     private void bookPracticalClasses(Scanner scanner) {
     }
@@ -138,8 +144,9 @@ public class Main {                        // ????
 
 
     private void addClassroom(Scanner scanner) {
+            scanner.nextLine();
             System.out.println("Enter name: ");
-            String name = scanner.next();
+            String name = scanner.nextLine();
             System.out.println("Enter number: ");
             int number = scanner.nextInt();
             System.out.println("Enter seats: ");
@@ -161,9 +168,36 @@ public class Main {                        // ????
         int number = scanner.nextInt();
         System.out.println(bookService.findByNumber(number));
     }
+    private void updateClassroom(Scanner scanner) {
+        System.out.println("Enter number: ");
+        int number = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Enter name: ");
+        String name = scanner.nextLine();
+        System.out.println("Enter seats: ");
+        int seats = scanner.nextInt();
+        System.out.println("Enter projector: ");
+        int projector = scanner.nextInt();
+        System.out.println("Enter whiteboard: ");
+        int whiteboard = scanner.nextInt();
+        System.out.println("Enter blackboard: ");
+        int blackboard = scanner.nextInt();
+        System.out.println("Enter speakers: ");
+        int speakers = scanner.nextInt();
+
+
+        bookService.findByNumber(number).setName(name);
+        bookService.findByNumber(number).setSeats(seats);
+        bookService.findByNumber(number).setSeats(projector);
+        bookService.findByNumber(number).setWhiteboard(whiteboard);
+        bookService.findByNumber(number).setBlackboard(blackboard);
+        bookService.findByNumber(number).setSpeakers(speakers);
+
+    }
     private void deleteClassroom(Scanner scanner) {
         System.out.println("Enter number of classroom to delete: ");
         int delnumber = scanner.nextInt();
+        bookService.delete(delnumber);
 
     }
     private void bookClassroom (Scanner scanner) {

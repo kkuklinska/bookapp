@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.xml.namespace.QName;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -35,6 +36,11 @@ public class ClassRoom {
     private int speakers;
     @Column(name = "AVAILABLE")
     private boolean available;
+
+
+
+//    @ManyToMany(mappedBy = "classrooms")
+//    private List<Instructor> instructors;
 
     }
 

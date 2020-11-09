@@ -26,8 +26,8 @@ public class JDBCClassroomRepository implements ClassRoomRepository {
             int blackboard= classroom.getBlackboard();
             int speakers = classroom.getSpeakers();
             boolean available= classroom.isAvailable();
-            final PreparedStatement statement = connection.prepareStatement(
-                    "INSERT INTO CLASSROOMBASE(CLASSROOM_ID, CLASSROOM_NAME, NUMBER, SEATS, PROJECTOR, WHITEBOARD, BLACKBOARD, SPEAKERS,AVAILABLE) VALUES (?,?,?,?,?,?,?,?,?)");
+            final PreparedStatement statement = connection.prepareStatement(              //zmieniona nazwa tabeli na male litery
+                    "INSERT INTO classroombase (CLASSROOM_ID, CLASSROOM_NAME, NUMBER, SEATS, PROJECTOR, WHITEBOARD, BLACKBOARD, SPEAKERS,AVAILABLE) VALUES (?,?,?,?,?,?,?,?,?)");
             statement.setLong(1, id);
             statement.setString(2, name);
             statement.setInt(3, number);
@@ -64,6 +64,12 @@ public class JDBCClassroomRepository implements ClassRoomRepository {
     public void book(int number) {
 
     }
+
+    @Override
+    public ClassRoom update(Long id, String name, int number, int seats, int projector, int whiteboard, int blackboard, int speakers, boolean available) {
+        return null;
+    }
+
 }
 
 

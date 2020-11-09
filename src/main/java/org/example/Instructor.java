@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,13 +19,14 @@ public class Instructor {
     @Column(name = "Instructor_ID")
     private Long id;
     @Column(name = "Instructor_name")
-    String name;
+    private String name;
     @Column(name = "Instructor_surname")
-    String surname;
+    private String surname;
     @Column(name = "Department")
-    String department;
+    private String department;
     @Column(name = "Available")
-    boolean available;
-
+    private boolean available;
+//    @ManyToMany
+//    private List<ClassRoom> classRooms;
 
     }

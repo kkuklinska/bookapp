@@ -7,8 +7,12 @@ public interface ClassRoomRepository {
 
     ClassRoom findByNumber(int number);
 
-    void delete(int classroom);
+    void delete(int number);
 
     void book(int number);
+
+    ClassRoom update(Long id, String name, int number, int seats,
+                     int projector, int whiteboard, int blackboard,
+                     int speakers, boolean available);
 }
 

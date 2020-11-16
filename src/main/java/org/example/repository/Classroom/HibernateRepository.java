@@ -3,7 +3,13 @@ package org.example.repository.Classroom;
 import org.example.ClassRoom;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
+
+@Repository
+@org.example.repository.annotation.HibernateRepository
 public class HibernateRepository implements ClassRoomRepository {
     @Override
     public void save(ClassRoom classroom) {
@@ -18,11 +24,11 @@ session.close();
     public ClassRoom findByNumber(int number) {
         final Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        final Query<ClassRoom> query = session.createQuery("from ClassRoom where number=: number", ClassRoom.class);
+        final Query<ClassRoom> query = session.createQuery("from ClassRoom where number=:number", ClassRoom.class);
         query.setParameter("number", number);
-        ClassRoom classRoom = query.uniqueResult();
+        final ClassRoom classroom = query.uniqueResult();
         session.close();
-        return classRoom;
+        return classroom;
 
     }
 
@@ -41,9 +47,11 @@ session.close();
     public void book(int number) {
         final Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        final Query<ClassRoom> query = session.createQuery("from ClassRoom where number=: number", ClassRoom.class);
+        final Query<ClassRoom> query = session.createQuery("from ClassRoom set available=false where number=: number", ClassRoom.class);
         ClassRoom classRoom = query.uniqueResult();
-        query.setParameter("available", false);
+        classRoom.setAvailable(false);
+//        query.setParameter("available", false);
+//        session.update("available", false);
         session.close();
 
     }

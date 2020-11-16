@@ -1,22 +1,35 @@
 package org.example.repository.Classroom;
 
 import org.example.ClassRoom;
+import org.example.repository.annotation.JdbcRepository;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+@Repository
+@JdbcRepository
 public class JDBCClassroomRepository implements ClassRoomRepository {
 
-        public static final String USER = "postgres";
-        public static final String PASSWORD = "qwerty";
-        public static final String JDBC_URL = "jdbc:postgresql://127.0.0.1:5432/test";   // ://127.0.0.1:49311/browser/
+        public final String user;
+        public final String password;
+        public final String jdbcUrl;
 
+    public JDBCClassroomRepository(
+           @Value("${jdbc.user") String user,
+           @Value("${jdbc.password")String password,
+           @Value("${jdbc.url")String jdbcUrl) {
+        this.user = user;
+        this.password = password;
+        this.jdbcUrl = jdbcUrl;
+    }
 
     @Override
     public void save(ClassRoom classroom) {
-        try (Connection connection = DriverManager.getConnection(JDBC_URL, USER, PASSWORD)) {
+        try (Connection connection = DriverManager.getConnection(jdbcUrl, user, password)) {
             final int number = classroom.getNumber();
             long id = classroom.getId();
             String name = classroom.getName();
@@ -27,7 +40,7 @@ public class JDBCClassroomRepository implements ClassRoomRepository {
             int speakers = classroom.getSpeakers();
             boolean available= classroom.isAvailable();
             final PreparedStatement statement = connection.prepareStatement(              //zmieniona nazwa tabeli na male litery
-                    "INSERT INTO classroombase (CLASSROOM_ID, CLASSROOM_NAME, NUMBER, SEATS, PROJECTOR, WHITEBOARD, BLACKBOARD, SPEAKERS,AVAILABLE) VALUES (?,?,?,?,?,?,?,?,?)");
+                    "INSERT INTO classroom (CLASSROOM_ID, CLASSROOM_NAME, NUMBER, SEATS, PROJECTOR, WHITEBOARD, BLACKBOARD, SPEAKERS,AVAILABLE) VALUES (?,?,?,?,?,?,?,?,?)");
             statement.setLong(1, id);
             statement.setString(2, name);
             statement.setInt(3, number);

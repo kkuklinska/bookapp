@@ -26,7 +26,9 @@ public class Instructor {
     private String department;
     @Column(name = "Available")
     private boolean available;
-//    @ManyToMany
-//    private List<ClassRoom> classRooms;
+    @ManyToMany(
+            mappedBy = "instructors",
+            targetEntity = ClassRoom.class)
+    private List<ClassRoom> classRooms;
 
     }

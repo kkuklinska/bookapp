@@ -3,7 +3,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.3.RELEASE</version>
+        <relativePath/>
+    </parent>
     <groupId>org.example</groupId>
     <artifactId>book-app</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -18,7 +23,6 @@
         <junit-jupiter-api.version>5.7.0</junit-jupiter-api.version>
         <lombok.version>1.18.16</lombok.version>
         <postgresql.version>42.2.5</postgresql.version>
-
         <hibernate-core.version>5.4.18.Final</hibernate-core.version>
         <mockito-core.version>3.6.0</mockito-core.version>
     </properties>
@@ -42,6 +46,11 @@
         <scope>test</scope>
     </dependency>
     <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-jpa</artifactId>
+
+    </dependency>
+    <dependency>
         <groupId>org.projectlombok</groupId>
         <artifactId>lombok</artifactId>
         <version>${lombok.version}</version>
@@ -53,13 +62,26 @@
         <version>${mockito-core.version}</version>
         <scope>test</scope>
     </dependency>
-
-
     <dependency>
         <groupId>org.hibernate</groupId>
         <artifactId>hibernate-core</artifactId>
         <version>${hibernate-core.version}</version>
     </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
 
     <dependency>
@@ -67,6 +89,7 @@
         <artifactId>postgresql</artifactId>
         <version>${postgresql.version}</version>
     </dependency>
+
 
 
 </dependencies>
@@ -105,6 +128,11 @@
                     </properties>
                 </configuration>
             </plugin>
+
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
         </plugins>
     </build>
 </project>

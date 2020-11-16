@@ -1,16 +1,21 @@
 package org.example.repository.Classroom;
 
 import org.example.ClassRoom;
+import org.example.repository.annotation.InMemoryRepository;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Set;
 
+
 public class InMemoryClassRoomRepository implements ClassRoomRepository {
 
-    private Set<ClassRoom> classRooms;
+    private List<ClassRoom> classRooms;
 
 
-    public InMemoryClassRoomRepository(Set<ClassRoom> classRooms) { // konstruktor zeby zainicjalizowac set
+    public InMemoryClassRoomRepository(List<ClassRoom> classRooms) { // konstruktor zeby zainicjalizowac set
         this.classRooms = classRooms;
     }
 
@@ -44,11 +49,12 @@ public class InMemoryClassRoomRepository implements ClassRoomRepository {
         first.
                 ifPresent(classRoom -> classRoom.setAvailable(false));
         if (classRooms.isEmpty()) {
-            System.out.println("");
+            throw new NoSuchElementException ("There is no classrooms in base.");
 
         }
 
     }
+
 
     @Override
     public ClassRoom update(Long id, String name, int number, int seats,

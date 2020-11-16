@@ -13,5 +13,6 @@
         <property name="hbm2ddl.auto">none</property>
         <property name="hibernate.default_schema">public</property>
         <mapping class="org.example.ClassRoom"></mapping>
+        <mapping class="org.example.Instructor"></mapping>
     </session-factory>
 </hibernate-configuration>

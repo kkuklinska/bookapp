@@ -14,7 +14,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "classroombase")
+@Table(name = "classroom")
 public class ClassRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,10 +37,13 @@ public class ClassRoom {
     @Column(name = "AVAILABLE")
     private boolean available;
 
-
-
-//    @ManyToMany(mappedBy = "classrooms")
-//    private List<Instructor> instructors;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "INSTRUCTORS_CLASSROOMS",
+            joinColumns = {@JoinColumn(name = "CLASSROOM_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "INSTRUCTOR_ID")}
+    )
+    private List<Instructor> instructors;
 
     }
 

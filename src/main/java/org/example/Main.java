@@ -5,24 +5,36 @@ import org.example.repository.Classroom.HibernateRepository;
 import org.example.repository.Classroom.InMemoryClassRoomRepository;
 import org.example.repository.Classroom.JDBCClassroomRepository;
 import org.example.service.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main {                        // ????
+@SpringBootApplication
+
+
+public class Main implements CommandLineRunner {
     private BookService bookService;
 
+    @Autowired
+    public Main(BookService bookService) {    // tworzymy konstruktor maina i tu wstrzykniecie
+        this.bookService = bookService;
+    }
+
     public static void main(String[] args) {
-        new Main().run();               // nie rozumiem tej konstrukcji nowy obiekt Main?? i na nim metoda run?
-    }                                   // - ?utworzono instancje klasy main po to aby metody mogly byc niestatyczne ?
+        SpringApplication.run(Main.class, args);
 
-        public void run () {
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
             HashSet<ClassRoom> classRooms = new HashSet<>();
-            final ClassRoomRepository repository = new HibernateRepository();
-            bookService = new BookService(repository);
-
-            HashSet<Instructor> instructors = new HashSet<>();
+            List<Instructor> instructors = new LinkedList<>();
 
             try (Scanner scanner = new Scanner(System.in)) {
                 while (true) {
@@ -160,7 +172,8 @@ public class Main {                        // ????
             System.out.println("Enter speakers: ");
             int speakers = scanner.nextInt();
 
-            bookService.save(new ClassRoom(null,name,number,seats,projector,whiteboard,blackboard,speakers,true));
+
+        bookService.save(new ClassRoom(null,name,number,seats,projector,whiteboard,blackboard,speakers,true, null));
         }
 
     private void findClassroom(Scanner scanner) {

@@ -1,12 +1,9 @@
 package org.example.repository.service;
 
-import org.example.ClassRoom;
-import org.example.Instructor;
-import org.example.repository.Classroom.ClassRoomRepository;
-import org.example.repository.Classroom.InMemoryClassRoomRepository;
+import org.example.repository.entity.ClassRoom;
+//import org.example.repository.entity.Instructor;
 import org.example.repository.ClassroomSpringJpaRepository;
 import org.example.service.BookService;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -31,28 +28,28 @@ public class BookServiceTest {
 
     }
 
-    @Test
-    public void verifyIfFindByNumberClassroomIsCorrect() {
-        int numberToFind = 1;
-        List<ClassRoom> classRooms = new LinkedList<>();
-
-        singletonList(new Instructor(null, "Antoni", "Zuter",
-                "Wydział Polonistyki", true, classRooms ));
-
-        ClassRoom classRoomToFind = new ClassRoom(
-                null, "Sala Testowa", numberToFind,
-                20,1,1,1,
-                2,true,
-                singletonList(new Instructor(null, "Antoni", "Zuter",
-                        "Wydział Polonistyki", true, classRooms))
-        );
-            when(repository.findByNumber(numberToFind))
-                    .thenReturn(classRoomToFind);
-            verify(repository, times(0)).findByNumber(numberToFind);
-        }
-
-
-
+//    @Test
+//    public void verifyIfFindByNumberClassroomIsCorrect() {
+//        int numberToFind = 1;
+//        List<ClassRoom> classRooms = new LinkedList<>();
+//
+//        singletonList(new Instructor(null, "Antoni", "Zuter",
+//                "Wydział Polonistyki", true, classRooms ));
+//
+//        ClassRoom classRoomToFind = new ClassRoom(
+//                null, "Sala Testowa", numberToFind,
+//                20,1,1,1,
+//                2,true,
+//                singletonList(new Instructor(null, "Antoni", "Zuter",
+//                        "Wydział Polonistyki", true, classRooms))
+//        );
+//            when(repository.findByNumber(numberToFind))
+//                    .thenReturn(classRoomToFind);
+//            verify(repository, times(0)).findByNumber(numberToFind);
+//        }
+//
+//
+//
 
 }
 

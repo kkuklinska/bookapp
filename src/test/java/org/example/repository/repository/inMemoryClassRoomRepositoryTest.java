@@ -1,27 +1,21 @@
-package org.example.repository.repository;
-
-import org.example.ClassRoom;
-import org.example.Instructor;
-import org.example.repository.Classroom.InMemoryClassRoomRepository;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import static java.util.Collections.singletonList;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
-
-import java.util.*;
-
-public class inMemoryClassRoomRepositoryTest {
-    private InMemoryClassRoomRepository repository;  //pole
-    private Set<ClassRoom> classRooms;
-
-    @BeforeEach
-    public void setup() {   //mimo ze mamy w klasie seta i repository to i tak przed testem trzeba tak jakby w metodzie?
-       List<ClassRoom> classRooms = new LinkedList<>();
-        repository = new InMemoryClassRoomRepository((List<ClassRoom>) classRooms);        // to ten set
-    }//
+//package org.example.repository.repository;
+//
+//import org.example.repository.entity.ClassRoom;
+//import org.junit.jupiter.api.BeforeEach;
+//
+//import static org.junit.jupiter.api.Assertions.assertEquals;
+//
+//import java.util.*;
+//
+//public class inMemoryClassRoomRepositoryTest {
+//    private InMemoryClassRoomRepository repository;  //pole
+//    private Set<ClassRoom> classRooms;
+//
+//    @BeforeEach
+//    public void setup() {   //mimo ze mamy w klasie seta i repository to i tak przed testem trzeba tak jakby w metodzie?
+//       List<ClassRoom> classRooms = new LinkedList<>();
+//        repository = new InMemoryClassRoomRepository((List<ClassRoom>) classRooms);        // to ten set
+//    }//
 //    @Test
 //    public void verifyIfClassroomAddingCorrectly(){
 ////given
@@ -37,7 +31,7 @@ public class inMemoryClassRoomRepositoryTest {
 //    }
 //
 //}
-}
+
 //    @Test
 //    public void verifyIfClassroomAddCorrectly() { // nie rozumiem co gdzie mam testowac np dodawanie nowej sali czy w bookserviceTest czy w inmemoryClassroomrepositorytest
 //        //given                                    // tu i tu mam dodawanie otestowane i przechodzi

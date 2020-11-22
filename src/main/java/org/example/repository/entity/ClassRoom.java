@@ -1,20 +1,18 @@
-package org.example;
+package org.example.repository.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.xml.namespace.QName;
 import java.util.List;
-import java.util.Objects;
 
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "classroom")
+@Table(name = "classroomtab")
 public class ClassRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,15 +35,16 @@ public class ClassRoom {
     @Column(name = "AVAILABLE")
     private boolean available;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "INSTRUCTORS_CLASSROOMS",
-            joinColumns = {@JoinColumn(name = "CLASSROOM_ID")},
-            inverseJoinColumns = {@JoinColumn(name = "INSTRUCTOR_ID")}
-    )
-    private List<Instructor> instructors;
-
-    }
+//    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @JoinTable(
+//            name = "INSTRUCTORS_CLASSROOMS",
+//            joinColumns = {@JoinColumn(name = "CLASSROOM_ID")},
+//            inverseJoinColumns = {@JoinColumn(name = "INSTRUCTOR_ID")}
+//    )
+}
+//    private List<Instructor> instructors;
+//
+//    }
 
 
 

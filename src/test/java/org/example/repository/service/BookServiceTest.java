@@ -1,15 +1,13 @@
 package org.example.repository.service;
 
-import org.example.repository.entity.ClassRoom;
+import org.example.repository.entity.Classroom;
 //import org.example.repository.entity.Instructor;
 import org.example.repository.ClassroomSpringJpaRepository;
 import org.example.service.BookService;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
-import static java.util.Collections.*;
 import static org.mockito.Mockito.*;
 
 public class BookServiceTest {
@@ -20,7 +18,7 @@ public class BookServiceTest {
 
     @BeforeEach
     public void setup() {
-        List<ClassRoom> classRooms = new LinkedList<>();  //usuwamy bo moki
+        List<Classroom> classrooms = new LinkedList<>();  //usuwamy bo moki
         // to bylo w srodku bookservice()-(new InMemoryClassRoomRepository(classRooms)));
 
         repository = mock(ClassroomSpringJpaRepository.class);//to repozytorium zainicjujemy mokiem, import static metoda mock() w srodku klasa ktora mokujemy

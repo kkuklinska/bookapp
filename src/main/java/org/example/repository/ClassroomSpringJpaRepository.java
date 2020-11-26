@@ -1,18 +1,12 @@
 package org.example.repository;
 
-import org.example.repository.entity.ClassRoom;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.example.repository.entity.Classroom;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
-import java.util.List;
-
-public interface ClassroomSpringJpaRepository extends JpaRepository<ClassRoom, Long> {
+public interface ClassroomSpringJpaRepository extends JpaRepository<Classroom, Long> {
 
 //    @Query("SELECT c FROM ClassRoom c where c.number=: number")
-    ClassRoom findByNumber(int number);
+    Classroom findByNumber(int number);
 
 //    List<ClassRoom> findByName(String name);
 //

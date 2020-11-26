@@ -1,6 +1,6 @@
 package org.example.service;
 
-import org.example.repository.entity.ClassRoom;
+import org.example.repository.entity.Classroom;
 import org.example.repository.ClassroomSpringJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,12 +18,12 @@ public class BookService {
         this.classRoomRepository = classRoomRepository;
     }
 
-    public void save(ClassRoom classRoom) {
+    public void save(Classroom classRoom) {
 
         classRoomRepository.save(classRoom);
     }
 
-    public ClassRoom findByNumber(int number) {
+    public Classroom findByNumber(int number) {
         return classRoomRepository.findByNumber(number);
         }
 

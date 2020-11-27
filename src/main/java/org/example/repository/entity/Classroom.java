@@ -34,6 +34,8 @@ public class Classroom {
     private int speakers;
     @Column(name = "AVAILABLE")
     private boolean available;
+    @OneToMany
+    private List<Reservation> reservations_class;
 
 //    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 //    @JoinTable(

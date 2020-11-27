@@ -1,4 +1,4 @@
-package org.example;
+package org.example.repository.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,7 +10,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
 @Entity
 @Table(name = "users")
 public class Instructor {
@@ -26,7 +25,10 @@ public class Instructor {
     private String department;
     @Column(name = "Available")
     private boolean available;
-//    @ManyToMany
-//    private List<ClassRoom> classRooms;
+    @OneToMany
+    private List<Reservation> reservations_instr;
 
-    }
+}
+
+//
+//    }

@@ -1,40 +1,59 @@
 package org.example.repository.service;
 
-import org.example.ClassRoom;
-import org.example.repository.Classroom.InMemoryClassRoomRepository;
+import org.example.repository.entity.Classroom;
+//import org.example.repository.entity.Instructor;
+import org.example.repository.ClassroomSpringJpaRepository;
 import org.example.service.BookService;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import java.util.HashSet;
-import java.util.NoSuchElementException;
-import java.util.Set;
+
+import java.util.*;
+
+import static org.mockito.Mockito.*;
 
 public class BookServiceTest {
 
     private BookService service;
-    private InMemoryClassRoomRepository repository;  //pole
-    private Set<ClassRoom> classRooms;
+    private ClassroomSpringJpaRepository repository;
+//    private List <ClassRoom> classRooms;
 
     @BeforeEach
     public void setup() {
-        HashSet<ClassRoom> classRooms = new HashSet<>();
-        service = new BookService(new InMemoryClassRoomRepository(classRooms));
+        List<Classroom> classrooms = new LinkedList<>();  //usuwamy bo moki
+        // to bylo w srodku bookservice()-(new InMemoryClassRoomRepository(classRooms)));
+
+        repository = mock(ClassroomSpringJpaRepository.class);//to repozytorium zainicjujemy mokiem, import static metoda mock() w srodku klasa ktora mokujemy
+        service = new BookService(repository); //mok wrzucamy do serwisu
+
     }
 
 //    @Test
-//    public void verifyIfClassroomAddCorrectly() { // nie rozumiem co gdzie mam testowac np dodawanie nowej sali czy w bookserviceTest czy w inmemoryClassroomrepositorytest
-//        //given                                    // tu i tu mam dodawanie otestowane i przechodzi
-//        int numberToDeleted = 1;
-//        ClassRoom classRoomToAdd = new ClassRoom(
-//                "Sala komputerowa", numberToDeleted, 40, 1, 1, 0, 40, false);
-//        service.save(classRoomToAdd);
-//        //when
-//        ClassRoom expectedClassRoom = new ClassRoom(
-//                "Sala komputerowa", numberToDeleted, 40, 1, 1, 0, 40, false);
-//        Assertions.assertEquals(expectedClassRoom, classRoomToAdd);
-    }
+//    public void verifyIfFindByNumberClassroomIsCorrect() {
+//        int numberToFind = 1;
+//        List<ClassRoom> classRooms = new LinkedList<>();
+//
+//        singletonList(new Instructor(null, "Antoni", "Zuter",
+//                "Wydział Polonistyki", true, classRooms ));
+//
+//        ClassRoom classRoomToFind = new ClassRoom(
+//                null, "Sala Testowa", numberToFind,
+//                20,1,1,1,
+//                2,true,
+//                singletonList(new Instructor(null, "Antoni", "Zuter",
+//                        "Wydział Polonistyki", true, classRooms))
+//        );
+//            when(repository.findByNumber(numberToFind))
+//                    .thenReturn(classRoomToFind);
+//            verify(repository, times(0)).findByNumber(numberToFind);
+//        }
+//
+//
+//
 
+}
+
+
+
+//
 //    @Test
 //    public void verifyIfClassroomBookedCorrectly() {
 //        //given
@@ -78,7 +97,7 @@ public class BookServiceTest {
 //        service.save(classRoomToAdd);
 //        //when
 //        service.delete(numberToDeleted);
-////            //then
+//            //then
 //
 //        ClassRoom deletedClassroom = service.findByNumber(numberToDeleted);
 //        ClassRoom expecteddeletedClassRoom = null;
@@ -110,7 +129,7 @@ public class BookServiceTest {
 //                () -> service.delete(numberToDeleted));
 //
 //
-//    }
+
 
 
 

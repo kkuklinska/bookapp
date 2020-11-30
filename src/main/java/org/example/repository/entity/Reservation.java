@@ -19,7 +19,6 @@ import java.util.List;
 public class Reservation {
     @Id
     private long id;
-
     @Temporal(TemporalType.TIME)
     private Date utildate;
     @Temporal(TemporalType.DATE)

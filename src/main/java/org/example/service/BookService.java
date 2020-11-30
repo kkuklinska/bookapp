@@ -9,22 +9,21 @@ import java.util.NoSuchElementException;
 
 @Service
 public class BookService {
-    private final ClassroomSpringJpaRepository classRoomRepository;
+    private final ClassroomSpringJpaRepository classroomRepository;
     private boolean available;
 
     @Autowired
     public BookService(
-             ClassroomSpringJpaRepository classRoomRepository) { // konstruktor usuwamy przy wstrzyknieciu przez pole
-        this.classRoomRepository = classRoomRepository;
+             ClassroomSpringJpaRepository classroomRepository) { // konstruktor usuwamy przy wstrzyknieciu przez pole
+        this.classroomRepository = classroomRepository;
     }
 
-    public void save(Classroom classRoom) {
-
-        classRoomRepository.save(classRoom);
+    public void save(Classroom classroom) {
+        classroomRepository.save(classroom);
     }
 
     public Classroom findByNumber(int number) {
-        return classRoomRepository.findByNumber(number);
+        return classroomRepository.findByNumber(number);
         }
 
 //    }
@@ -47,13 +46,13 @@ public class BookService {
 //        }
 
         public void book ( int booknumber){
-            available = classRoomRepository.findByNumber(booknumber).isAvailable();
+            available = classroomRepository.findByNumber(booknumber).isAvailable();
             try {
                 if (!available) {
                     System.out.println("This classroom is not available");
                 }
                 if (available) {
-                    classRoomRepository.findByNumber(booknumber).setAvailable(false);
+                    classroomRepository.findByNumber(booknumber).setAvailable(false);
                     System.out.println("Classroom booked successfully.");
                 }
             } catch (NoSuchElementException exception) {

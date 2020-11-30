@@ -15,16 +15,16 @@ public class BookController {
 
     @GetMapping(path = "/api/user")
     public ResponseEntity <Classroom>findByNumber(@RequestParam int number){
-        final Classroom classRoom = service.findByNumber(number);
+        final Classroom classroom = service.findByNumber(number);
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add("EXAMPLE_HEADER", "DUMMY_VALUE");
-        return new ResponseEntity<>(classRoom,httpHeaders,HttpStatus.ACCEPTED);
+        httpHeaders.add("EXAMPLE_HEADER", "EXAMPLE_VALUE");
+        return new ResponseEntity<>(classroom,httpHeaders,HttpStatus.ACCEPTED);
     }
 
     @PostMapping(path ="/api/user")
-    @ResponseStatus(code= HttpStatus.CREATED)
-public void createClassroom(@RequestBody Classroom classRoom){
-        service.save(classRoom);
+    @ResponseStatus(code= HttpStatus.CREATED)  // 2 sposob
+    public void createClassroom(@RequestBody Classroom classroom){
+        service.save(classroom);
 
 }
 

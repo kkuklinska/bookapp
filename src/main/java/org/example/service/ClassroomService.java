@@ -10,13 +10,13 @@ import org.springframework.stereotype.Service;
 import java.util.NoSuchElementException;
 
 @Service
-public class BookService {
+public class ClassroomService {
     private final ClassroomSpringJpaRepository classroomRepository;
     private boolean available;
     private final ClassroomMapper mapper;
 
     @Autowired
-    public BookService(
+    public ClassroomService(
             ClassroomSpringJpaRepository classroomRepository,
             ClassroomMapper mapper
     ) { // konstruktor usuwamy przy wstrzyknieciu przez pole

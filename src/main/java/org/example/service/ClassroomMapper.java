@@ -1,10 +1,11 @@
 package org.example.service;
+import org.springframework.stereotype.Component;
 
 import org.example.controller.dto.ClassroomRequest;
 import org.example.controller.dto.ClassroomResponse;
 import org.example.repository.entity.Classroom;
 import org.example.repository.entity.Reservation;
-import org.springframework.stereotype.Component;
+
 
 import java.util.stream.Collectors;
 

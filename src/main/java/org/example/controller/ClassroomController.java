@@ -3,8 +3,7 @@ package org.example.controller;
 import lombok.RequiredArgsConstructor;
 import org.example.controller.dto.ClassroomRequest;
 import org.example.controller.dto.ClassroomResponse;
-import org.example.repository.entity.Classroom;
-import org.example.service.BookService;
+import org.example.service.ClassroomService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-public class BookController {
-    private final BookService service;
+public class ClassroomController {
+    private final ClassroomService service;
 
     @GetMapping(path = "/api/user")
     public ResponseEntity <ClassroomResponse>findByNumber(@RequestParam int number){

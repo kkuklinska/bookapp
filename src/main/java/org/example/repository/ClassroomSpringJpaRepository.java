@@ -2,11 +2,14 @@ package org.example.repository;
 
 import org.example.repository.entity.Classroom;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 public interface ClassroomSpringJpaRepository extends JpaRepository<Classroom, Long> {
 
-//    @Query("SELECT c FROM ClassRoom c where c.number=: number")
+//    @Query("SELECT c FROM Classroom c where c.number=: number")
     Classroom findByNumber(int number);
+
+
 
 //    List<ClassRoom> findByName(String name);
 //

@@ -20,9 +20,9 @@ public class Reservation {
     @Id
     private long id;
     @Temporal(TemporalType.TIME)
-    private Time time_from;
+    private Date time_from;
     @Temporal(TemporalType.TIME)
-    private Time time_to;
+    private Date time_to;
     @Temporal(TemporalType.DATE)
     private Calendar calender;
     @ManyToOne

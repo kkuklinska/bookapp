@@ -46,7 +46,7 @@ public class Classroom {
 //            inverseJoinColumns = {@JoinColumn(name = "INSTRUCTOR_ID")}
 //    )
 }
-//    private List<Instructor> instructors;
+//
 //
 //    }
 
